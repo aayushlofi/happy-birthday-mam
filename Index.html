@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FAF7F0">
+<title>Happy Birthday, Shonali Ma'am | Class 10</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+:root {
+  --paper: #FAF7F0;
+  --ink: #1E2238;
+  --gold: #C5A059;
+  --white: #FFFFFF;
+  --muted: #77766F;
+  --line: rgba(30,34,56,.12);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.progress {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--gold);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 7%;
+  background: rgba(250,247,240,.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.5px;
+}
+
+.brand span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links a { opacity: .7; transition: .25s; }
+.nav-links a:hover, .nav-links a.active { opacity: 1; color: #9c7835; }
+
+.nav-cta {
+  border: 1px solid var(--ink);
+  padding: 10px 17px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.nav-cta:hover { background: var(--ink); color: white; }
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 690px;
+  padding: 85px 8% 95px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 55px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "10";
+  position: absolute;
+  right: -20px;
+  bottom: -125px;
+  font-family: var(--serif);
+  font-size: 430px;
+  color: rgba(197,160,89,.055);
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #98763c;
+  margin-bottom: 28px;
+}
+
+.eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 35px;
+  background: var(--gold);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(55px, 7.2vw, 100px);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -4px;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-copy {
+  max-width: 470px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+  margin-top: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.btn {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: white;
+  padding: 15px 23px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover { background: transparent; color: var(--ink); transform: translateY(-3px); }
+
+.btn-outline { background: transparent; color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+
+.hero-note {
+  margin-top: 55px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+}
+
+.hero-visual {
+  position: relative;
+  max-width: 410px;
+  width: 100%;
+  margin: auto;
+}
+
+.portrait-frame {
+  position: relative;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 25px 70px rgba(30,34,56,.12);
+  transform: rotate(2deg);
+}
+
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  inset: -12px 12px 12px -12px;
+  border: 1px solid var(--gold);
+  z-index: -1;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+  display: block;
+  background: #e9e3d8;
+}
+
+.portrait-caption {
+  text-align: center;
+  padding: 17px 5px 7px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+}
+
+.hero-stamp {
+  position: absolute;
+  bottom: 42px;
+  left: -45px;
+  width: 105px;
+  height: 105px;
+  border: 1px solid var(--gold);
+  background: var(--paper);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.3;
+  transform: rotate(-12deg);
+  z-index: 2;
+}
+
+.hero-stamp span { color: var(--gold); font-size: 20px; }
+
+.section {
+  padding: 110px 8%;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 55px;
+}
+
+.kicker {
+  color: #98763c;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+}
+
+.section h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(37px, 5vw, 58px);
+  line-height: 1.12;
+}
+
+.section-head p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+.gratitude {
+  background: #F0EBE1;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.card {
+  background: var(--white);
+  padding: 30px 25px;
+  min-height: 260px;
+  border: 1px solid rgba(30,34,56,.06);
+  transition: .35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 20px 45px rgba(30,34,56,.09);
+}
+
+.card-number {
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 35px;
+}
+
+.card-icon {
+  font-size: 24px;
+  margin: 18px 0;
+}
+
+.card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.quote-band {
+  background: var(--ink);
+  color: white;
+  padding: 90px 10%;
+  text-align: center;
+}
+
+.quote-mark {
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 70px;
+  line-height: .8;
+}
+
+.quote-band blockquote {
+  max-width: 850px;
+  margin: 20px auto;
+  font-family: var(--serif);
+  font-size: clamp(27px, 4vw, 43px);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.quote-band p {
+  color: #c9c5bb;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  align-items: start;
+}
+
+.polaroid {
+  padding: 12px 12px 25px;
+  background: white;
+  box-shadow: 0 12px 35px rgba(30,34,56,.10);
+  cursor: pointer;
+  transition: .35s;
+}
+
+.polaroid:nth-child(1) { transform: rotate(-3deg); }
+.polaroid:nth-child(2) { transform: rotate(2deg); margin-top: 35px; }
+.polaroid:nth-child(3) { transform: rotate(-1deg); }
+
+.polaroid:hover {
+  transform: translateY(-10px) rotate(0);
+  box-shadow: 0 25px 50px rgba(30,34,56,.15);
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: #e9e3d8;
+}
+
+.polaroid p {
+  text-align: center;
+  padding-top: 19px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+}
+
+.chronicle {
+  background: #F0EBE1;
+}
+
+.notes {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.note {
+  background: white;
+  padding: 30px;
+  border-left: 2px solid var(--gold);
+}
+
+.note small {
+  color: #98763c;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+.note h3 {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  margin: 13px 0;
+}
+
+.note p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.counter-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 850px;
+  margin: 60px auto 0;
+  text-align: center;
+}
+
+.counter strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.counter span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.letter-section { background: var(--paper); }
+
+.letter {
+  max-width: 760px;
+  margin: auto;
+  background: white;
+  padding: clamp(30px, 7vw, 75px);
+  border: 1px solid rgba(197,160,89,.6);
+  outline: 1px solid rgba(197,160,89,.35);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(30,34,56,.06);
+}
+
+.letter-top {
+  text-align: center;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.letter h2 {
+  font-family: var(--serif);
+  font-size: 37px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.letter p {
+  color: #62616a;
+  line-height: 2;
+  font-size: 14px;
+  margin-bottom: 17px;
+}
+
+.signature {
+  font-family: "Caveat", cursive;
+  font-size: 34px;
+  color: var(--ink);
+  margin-top: 30px;
+}
+
+.signature small {
+  display: block;
+  font-family: var(--sans);
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.final-cta {
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  padding: 95px 8%;
+}
+
+.final-cta h2 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 68px);
+  font-weight: 500;
+}
+
+.final-cta p {
+  color: #c9c5bb;
+  margin: 18px auto 30px;
+  line-height: 1.8;
+  max-width: 500px;
+  font-size: 14px;
+}
+
+.seal {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.seal:hover { background: var(--gold); color: var(--ink); transform: scale(1.08) rotate(12deg); }
+
+footer {
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+footer span { color: var(--gold); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lightbox, .birthday-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15,17,29,.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.lightbox.open, .birthday-modal.open { display: flex; }
+
+.lightbox img {
+  max-width: min(90vw, 850px);
+  max-height: 85vh;
+  object-fit: contain;
+  border: 8px solid white;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.modal-paper {
+  max-width: 510px;
+  width: 100%;
+  padding: 55px 35px;
+  background: var(--paper);
+  text-align: center;
+  border: 1px solid var(--gold);
+  position: relative;
+}
+
+.modal-paper .sparkle { font-size: 38px; color: var(--gold); }
+
+.modal-paper h2 {
+  font-family: var(--serif);
+  font-size: 43px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.modal-paper p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.modal-paper .signature { margin-top: 20px; }
+
+@media(max-width: 950px) {
+  .hero { grid-template-columns: 1fr 1fr; padding-left: 6%; padding-right: 6%; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .portrait-frame img { height: 390px; }
+}
+
+@media(max-width: 700px) {
+  .nav { padding: 15px 6%; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 25px 7%;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-cta { display: none; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 65px 7% 75px;
+    gap: 55px;
+  }
+  .hero h1 { font-size: clamp(57px, 15vw, 83px); letter-spacing: -3px; }
+  .hero-visual { max-width: 340px; }
+  .portrait-frame img { height: 390px; }
+  .hero-stamp { left: -20px; width: 85px; height: 85px; font-size: 12px; }
+
+  .section { padding: 80px 7%; }
+  .cards { grid-template-columns: 1fr; }
+  .card { min-height: auto; }
+  .gallery-grid { grid-template-columns: 1fr; gap: 35px; max-width: 360px; margin: auto; }
+  .polaroid:nth-child(2) { margin-top: 0; }
+  .polaroid img { height: 330px; }
+  .notes { grid-template-columns: 1fr; }
+  .counter-row { gap: 10px; }
+  .counter strong { font-size: 37px; }
+  .counter span { font-size: 8px; letter-spacing: 1px; }
+  .letter h2 { font-size: 30px; }
+  footer { justify-content: center; text-align: center; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="progress" id="progress"></div>
+
+<nav class="nav">
+  <a href="#home" class="brand">CLASS <span>X</span> · I</a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#gratitude">Our Gratitude</a>
+    <a href="#gallery">Memories</a>
+    <a href="#letter">A Letter</a>
+  </div>
+
+  <a href="#surprise" class="nav-cta">A Little Surprise ↗</a>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content reveal">
+    <div class="eyebrow">A special day · A special teacher</div>
+
+    <h1>Happy<br>Birthday,<br><em>Shonali Ma'am.</em></h1>
+
+    <p class="hero-copy">
+      Some lessons stay with us long after the school bell rings.
+      Today, we celebrate the person behind so many of those lessons —
+      a teacher, a guide, and an inspiration.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#gratitude" class="btn">Read Our Tribute ↗</a>
+      <a href="#gallery" class="btn btn-outline">Explore Memories</a>
+    </div>
+
+    <p class="hero-note">With love and gratitude, from Class 10th I.</p>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="portrait-frame">
+      <img src="maam-hero.jpg"
+           alt="Shonali Ma'am"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&auto=format&fit=crop&q=85'">
+      <div class="portrait-caption">A teacher who makes a difference.</div>
+    </div>
+    <div class="hero-stamp">MADE WITH<br><span>♥</span><br>GRATITUDE</div>
+  </div>
+</section>
+
+<section class="section gratitude" id="gratitude">
+  <div class="section-head reveal">
+    <div class="kicker">A few things we learned</div>
+    <h2>More Than Just<br>English Lessons.</h2>
+    <p>
+      The best teachers don't just teach chapters. They leave us with
+      ideas, confidence, curiosity, and memories that last.
+    </p>
+  </div>
+
+  <div class="cards">
+    <article class="card reveal">
+      <div class="card-number">01</div>
+      <div class="card-icon">✦</div>
+      <h3>The Power of Words</h3>
+      <p>You taught us that words are more than sentences — they are ways to express, understand, and connect with the world.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-number">02</div>
+      <div class="card-icon">⌁</div>
+      <h3>Confidence to Speak</h3>
+      <p>Every correction and every encouragement helped us find our voice and become a little more confident.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-number">03</div>
+      <div class="card-icon">❋</div>
+      <h3>Lessons Beyond Books</h3>
+      <p>From literature to life, you helped us look beyond the printed page and discover something meaningful.</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-number">04</div>
+      <div class="card-icon">✧</div>
+      <h3>Memories That Stay</h3>
+      <p>Years may pass, but the classroom moments, laughter, and lessons will always remain a part of our story.</p>
+    </article>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="quote-mark">“</div>
+  <blockquote class="reveal">
+    A good teacher can inspire hope, ignite imagination,
+    and instil a love of learning.
+  </blockquote>
+  <p>For the teacher who does all three</p>
+</section>
+
+<section class="section" id="gallery">
+  <div class="section-head reveal">
+    <div class="kicker">Little moments, lasting memories</div>
+    <h2>Our Classroom<br>Chronicles.</h2>
+    <p>
+      Every photograph has a story. Every ordinary school day
+      becomes special when we look back at it.
+    </p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open classroom memory">
+      <img src="maam-class.jpg"
+           alt="Classroom memory"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=85'">
+      <p>Moments in the classroom</p>
+    </div>
+
+    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open candid memory">
+      <img src="maam-candid.jpg"
+           alt="A candid memory"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=85'">
+      <p>The little moments</p>
+    </div>
+
+    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open class group memory">
+      <img src="class-group.jpg"
+           alt="Class group memory"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&auto=format&fit=crop&q=85'">
+      <p>One class, countless memories</p>
+    </div>
+  </div>
+</section>
+
+<section class="section chronicle">
+  <div class="section-head reveal">
+    <div class="kicker">From the pages of Class 10th I</div>
+    <h2>Things We May<br>Never Forget.</h2>
+    <p>
+      A collection of little appreciations for the person who made
+      our learning journey more meaningful.
+    </p>
+  </div>
+
+  <div class="notes">
+    <article class="note reveal">
+      <small>Chapter 01 · Appreciation</small>
+      <h3>For Your Patience</h3>
+      <p>Thank you for explaining things again, answering our questions, and never giving up on our potential.</p>
+    </article>
+
+    <article class="note reveal">
+      <small>Chapter 02 · Inspiration</small>
+      <h3>For Your Encouragement</h3>
+      <p>Your words of encouragement remind us that improvement matters more than perfection.</p>
+    </article>
+
+    <article class="note reveal">
+      <small>Chapter 03 · Memories</small>
+      <h3>For The Laughter</h3>
+      <p>Not every memorable classroom moment comes from a textbook. Some come from the smiles and laughter we share.</p>
+    </article>
+
+    <article class="note reveal">
+      <small>Chapter 04 · Gratitude</small>
+      <h3>For Being You</h3>
+      <p>Thank you for being more than a teacher and making our school journey a little brighter.</p>
+    </article>
+  </div>
+
+  <div class="counter-row reveal">
+    <div class="counter">
+      <strong data-count="365">0</strong>
+      <span>Days of learning</span>
+    </div>
+    <div class="counter">
+      <strong data-count="100">0</strong>
+      <span>Reasons to smile</span>
+    </div>
+    <div class="counter">
+      <strong data-count="1">0</strong>
+      <span>Wonderful teacher</span>
+    </div>
+  </div>
+</section>
+
+<section class="section letter-section" id="letter">
+  <div class="section-head reveal">
+    <div class="kicker">A note from your students</div>
+    <h2>A Letter From<br>Our Hearts.</h2>
+  </div>
+
+  <div class="letter reveal">
+    <div class="letter-top">With heartfelt gratitude</div>
+
+    <h2>Dear Shonali Ma'am,</h2>
+
+    <p>
+      On your special day, we wanted to take a moment to say something
+      that we may not say often enough — thank you.
+    </p>
+
+    <p>
+      Thank you for teaching us, guiding us, correcting us, and
+      encouraging us to do better. Your classes have given us more
+      than knowledge of English; they have given us experiences,
+      confidence, and memories that we will carry forward.
+    </p>
+
+    <p>
+      We know that teaching is not always easy. Behind every lesson
+      is your time, effort, and dedication. We truly appreciate
+      everything you do for us.
+    </p>
+
+    <p>
+      May this year bring you happiness, good health, peace, and
+      countless reasons to smile. May you continue inspiring
+      students just as you have inspired us.
+    </p>
+
+    <p>
+      Happy Birthday once again, Ma'am. We feel fortunate to be
+      your students.
+    </p>
+
+    <div class="signature">
+      With love and respect,
+      <small>Your Class 10th I</small>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="surprise">
+  <div class="kicker">One last thing...</div>
+  <h2>Today Is All About You.</h2>
+  <p>
+    A little celebration from all of us. Thank you for being
+    a wonderful part of our school journey.
+  </p>
+  <button class="seal" id="surpriseButton" aria-label="Open birthday surprise">✦</button>
+  <p style="font-size:10px;letter-spacing:2px;margin-top:18px;">TAP THE SEAL FOR A SURPRISE</p>
+</section>
+</main>
+
+<footer>
+  <div>Made with <span>♥</span> by Class 10th I</div>
+  <div>Happy Birthday, Shonali Ma'am · <span>2026</span></div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="close" id="closeLightbox" aria-label="Close">×</button>
+  <img src="" alt="Enlarged classroom memory" id="lightboxImage">
+</div>
+
+<div class="birthday-modal" id="birthdayModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <button class="close" id="closeModal" aria-label="Close">×</button>
+  <div class="modal-paper">
+    <div class="sparkle">✦ ✧ ✦</div>
+    <div class="kicker">A special wish for a special teacher</div>
+    <h2 id="modalTitle">Happy Birthday!</h2>
+    <p>
+      May your days be filled with the same joy, kindness,
+      and inspiration that you bring into our classroom.
+    </p>
+    <div class="signature">With lots of love ♥</div>
+    <p style="margin-top:8px;font-size:11px;letter-spacing:2px;">CLASS 10TH I</p>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.textContent = "☰";
+  });
+});
+
+// Reading progress
+window.addEventListener("scroll", () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  document.getElementById("progress").style.width = progress + "%";
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+// Gallery lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+
+function openLightbox(img) {
+  lightboxImage.src = img.src;
+  lightboxImage.alt = img.alt;
+  lightbox.classList.add("open");
+}
+
+document.querySelectorAll(".polaroid").forEach(card => {
+  card.addEventListener("click", () => openLightbox(card.querySelector("img")));
+  card.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openLightbox(card.querySelector("img"));
+    }
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+}
+
+document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Birthday surprise
+const birthdayModal = document.getElementById("birthdayModal");
+
+function celebrate() {
+  birthdayModal.classList.add("open");
+
+  if (typeof confetti === "function") {
+    const duration = 2800;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 65,
+        origin: { x: 0, y: 0.7 },
+        colors: ["#C5A059", "#FFFFFF", "#E7C77D", "#1E2238"]
+      });
+
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 65,
+        origin: { x: 1, y: 0.7 },
+        colors: ["#C5A059", "#FFFFFF", "#E7C77D", "#1E2238"]
+      });
+
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+  }
+}
+
+document.getElementById("surpriseButton").addEventListener("click", celebrate);
+
+function closeBirthdayModal() {
+  birthdayModal.classList.remove("open");
+}
+
+document.getElementById("closeModal").addEventListener("click", closeBirthdayModal);
+birthdayModal.addEventListener("click", e => {
+  if (e.target === birthdayModal) closeBirthdayModal();
+});
+
+// Keyboard controls
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    closeLightbox();
+    closeBirthdayModal();
+  }
+});
+
+// Gentle counter animation
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const el = entry.target;
+    const target = Number(el.dataset.count);
+    const start = performance.now();
+    const duration = 1400;
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased) + (target === 100 ? "+" : "");
+
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.7 });
+
+document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
