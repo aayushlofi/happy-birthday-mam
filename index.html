@@ -1,1123 +1,1507 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FAF7F0">
-<title>Happy Birthday, Shonali Ma'am | Class 10</title>
+<title>Happy Birthday Shonali Ma'am | Class 10th I</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --paper: #FAF7F0;
   --ink: #1E2238;
   --gold: #C5A059;
+  --gold-light: #E6D3A6;
   --white: #FFFFFF;
   --muted: #77766F;
   --line: rgba(30,34,56,.12);
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "DM Sans", sans-serif;
+  --shadow: 0 20px 60px rgba(30,34,56,.10);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { scroll-behavior:smooth; }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  overflow-x: hidden;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 10;
-  opacity: .12;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+body.locked { overflow:hidden; }
+
+button { font:inherit; cursor:pointer; }
+
+a { color:inherit; text-decoration:none; }
+
+img { max-width:100%; display:block; }
+
+::selection {
+  background:var(--gold);
+  color:white;
 }
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
+/* CINEMATIC INTRO */
 
-.progress {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0;
-  background: var(--gold);
+.intro {
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:#1E2238;
+  color:#FAF7F0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  transition:opacity 1s ease, visibility 1s ease;
 }
 
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 17px 7%;
-  background: rgba(250,247,240,.88);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+.intro.hide {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.intro-content { max-width:700px; }
+
+.intro-small {
+  color:var(--gold-light);
+  letter-spacing:5px;
+  font-size:11px;
+  text-transform:uppercase;
+  opacity:0;
+  animation:rise 1s .4s forwards;
+}
+
+.intro-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,8vw,86px);
+  line-height:1.12;
+  margin:25px 0;
+  font-weight:500;
+  opacity:0;
+  animation:rise 1.2s .9s forwards;
+}
+
+.intro-title span { color:var(--gold-light); }
+
+.intro-line {
+  height:1px;
+  width:0;
+  margin:25px auto;
+  background:var(--gold);
+  animation:lineGrow 1.4s 1.5s forwards;
+}
+
+.intro-sub {
+  font-size:14px;
+  color:#D9D7D0;
+  letter-spacing:2px;
+  opacity:0;
+  animation:rise 1s 2s forwards;
+}
+
+.intro-btn {
+  margin-top:38px;
+  padding:15px 28px;
+  background:transparent;
+  color:var(--gold-light);
+  border:1px solid var(--gold);
+  letter-spacing:2px;
+  font-size:11px;
+  transition:.3s;
+  opacity:0;
+  animation:rise 1s 2.5s forwards;
+}
+
+.intro-btn:hover {
+  background:var(--gold);
+  color:var(--ink);
+}
+
+@keyframes rise {
+  from { opacity:0; transform:translateY(22px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes lineGrow {
+  to { width:130px; }
+}
+
+/* BACKGROUND DETAILS */
+
+.grain {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:5;
+  opacity:.13;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+}
+
+#particles {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* NAVIGATION */
+
+nav {
+  position:absolute;
+  top:0;
+  width:100%;
+  padding:25px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:20;
 }
 
 .brand {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -.5px;
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
-.brand span { color: var(--gold); }
+.brand span { color:var(--gold); }
 
-.nav-links {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+.nav-right {
+  display:flex;
+  gap:28px;
+  align-items:center;
+  font-size:12px;
+  color:var(--muted);
 }
 
-.nav-links a { opacity: .7; transition: .25s; }
-.nav-links a:hover, .nav-links a.active { opacity: 1; color: #9c7835; }
+.nav-right a:hover { color:var(--gold); }
 
-.nav-cta {
-  border: 1px solid var(--ink);
-  padding: 10px 17px;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: .3s;
+.nav-pill {
+  padding:10px 18px;
+  border:1px solid var(--gold);
+  color:var(--ink);
 }
 
-.nav-cta:hover { background: var(--ink); color: white; }
-
-.menu-toggle {
-  display: none;
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 25px;
-  cursor: pointer;
-}
+/* HERO */
 
 .hero {
-  min-height: 690px;
-  padding: 85px 8% 95px;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  align-items: center;
-  gap: 55px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::after {
-  content: "10";
-  position: absolute;
-  right: -20px;
-  bottom: -125px;
-  font-family: var(--serif);
-  font-size: 430px;
-  color: rgba(197,160,89,.055);
-  pointer-events: none;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:50px;
+  padding:140px 9% 90px;
+  position:relative;
+  z-index:2;
 }
 
 .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #98763c;
-  margin-bottom: 28px;
-}
-
-.eyebrow::before {
-  content: "";
-  height: 1px;
-  width: 35px;
-  background: var(--gold);
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
 }
 
 .hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(55px, 7.2vw, 100px);
-  font-weight: 500;
-  line-height: .98;
-  letter-spacing: -4px;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(54px,7vw,100px);
+  line-height:1.02;
+  font-weight:500;
+  margin:25px 0;
 }
 
 .hero h1 em {
-  color: var(--gold);
-  font-weight: 400;
+  color:var(--gold);
+  font-weight:400;
 }
 
-.hero-copy {
-  max-width: 470px;
-  color: var(--muted);
-  line-height: 1.9;
-  font-size: 15px;
-  margin-top: 28px;
+.hero-description {
+  max-width:460px;
+  color:#77766F;
+  font-size:15px;
+  line-height:1.9;
+}
+
+.hero-signature {
+  margin-top:30px;
+  font-family:'Caveat',cursive;
+  color:var(--gold);
+  font-size:29px;
 }
 
 .hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 35px;
+  margin-top:35px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
 }
 
 .btn {
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: white;
-  padding: 15px 23px;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: .3s;
+  border:1px solid var(--ink);
+  padding:15px 24px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:.3s;
+  background:transparent;
+  color:var(--ink);
 }
 
-.btn:hover { background: transparent; color: var(--ink); transform: translateY(-3px); }
+.btn.primary {
+  background:var(--ink);
+  color:white;
+}
 
-.btn-outline { background: transparent; color: var(--ink); }
-.btn-outline:hover { background: var(--ink); color: white; }
-
-.hero-note {
-  margin-top: 55px;
-  color: var(--muted);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 16px;
+.btn:hover {
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
 }
 
 .hero-visual {
-  position: relative;
-  max-width: 410px;
-  width: 100%;
-  margin: auto;
+  position:relative;
+  max-width:440px;
+  width:100%;
+  margin:auto;
 }
 
-.portrait-frame {
-  position: relative;
-  padding: 15px;
-  background: white;
-  box-shadow: 0 25px 70px rgba(30,34,56,.12);
-  transform: rotate(2deg);
+.hero-frame {
+  padding:13px;
+  background:white;
+  box-shadow:var(--shadow);
+  transform:rotate(2deg);
+  position:relative;
 }
 
-.portrait-frame::before {
-  content: "";
-  position: absolute;
-  inset: -12px 12px 12px -12px;
-  border: 1px solid var(--gold);
-  z-index: -1;
+.hero-frame img {
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  background:#E9E1D2;
 }
 
-.portrait-frame img {
-  width: 100%;
-  height: 470px;
-  object-fit: cover;
-  display: block;
-  background: #e9e3d8;
-}
-
-.portrait-caption {
-  text-align: center;
-  padding: 17px 5px 7px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 17px;
+.photo-caption {
+  font-family:'Caveat',cursive;
+  font-size:25px;
+  text-align:center;
+  padding:15px 0 7px;
+  color:var(--ink);
 }
 
 .hero-stamp {
-  position: absolute;
-  bottom: 42px;
-  left: -45px;
-  width: 105px;
-  height: 105px;
-  border: 1px solid var(--gold);
-  background: var(--paper);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.3;
-  transform: rotate(-12deg);
-  z-index: 2;
+  position:absolute;
+  bottom:35px;
+  left:-45px;
+  width:110px;
+  height:110px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  background:var(--paper);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:14px;
+  line-height:1.4;
+  transform:rotate(-12deg);
 }
 
-.hero-stamp span { color: var(--gold); font-size: 20px; }
-
-.section {
-  padding: 110px 8%;
+.scroll-note {
+  position:absolute;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:10px;
+  letter-spacing:3px;
+  color:#999;
 }
 
-.section-head {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 55px;
+/* COMMON SECTIONS */
+
+section {
+  position:relative;
+  z-index:2;
+  padding:110px 9%;
 }
 
-.kicker {
-  color: #98763c;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 17px;
+.section-heading {
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 55px;
 }
 
-.section h2 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(37px, 5vw, 58px);
-  line-height: 1.12;
+.section-heading .eyebrow { margin-bottom:15px; }
+
+.section-heading h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(35px,5vw,58px);
+  font-weight:500;
+  line-height:1.2;
 }
 
-.section-head p {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 14px;
-  margin-top: 18px;
+.section-heading p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.9;
+  margin-top:17px;
 }
-
-.gratitude {
-  background: #F0EBE1;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
-}
-
-.card {
-  background: var(--white);
-  padding: 30px 25px;
-  min-height: 260px;
-  border: 1px solid rgba(30,34,56,.06);
-  transition: .35s;
-  position: relative;
-  overflow: hidden;
-}
-
-.card:hover {
-  transform: translateY(-9px);
-  box-shadow: 0 20px 45px rgba(30,34,56,.09);
-}
-
-.card-number {
-  font-family: var(--serif);
-  color: var(--gold);
-  font-size: 35px;
-}
-
-.card-icon {
-  font-size: 24px;
-  margin: 18px 0;
-}
-
-.card h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.card p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.quote-band {
-  background: var(--ink);
-  color: white;
-  padding: 90px 10%;
-  text-align: center;
-}
-
-.quote-mark {
-  font-family: var(--serif);
-  color: var(--gold);
-  font-size: 70px;
-  line-height: .8;
-}
-
-.quote-band blockquote {
-  max-width: 850px;
-  margin: 20px auto;
-  font-family: var(--serif);
-  font-size: clamp(27px, 4vw, 43px);
-  line-height: 1.4;
-  font-style: italic;
-}
-
-.quote-band p {
-  color: #c9c5bb;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 25px;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 35px;
-  align-items: start;
-}
-
-.polaroid {
-  padding: 12px 12px 25px;
-  background: white;
-  box-shadow: 0 12px 35px rgba(30,34,56,.10);
-  cursor: pointer;
-  transition: .35s;
-}
-
-.polaroid:nth-child(1) { transform: rotate(-3deg); }
-.polaroid:nth-child(2) { transform: rotate(2deg); margin-top: 35px; }
-.polaroid:nth-child(3) { transform: rotate(-1deg); }
-
-.polaroid:hover {
-  transform: translateY(-10px) rotate(0);
-  box-shadow: 0 25px 50px rgba(30,34,56,.15);
-}
-
-.polaroid img {
-  display: block;
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  background: #e9e3d8;
-}
-
-.polaroid p {
-  text-align: center;
-  padding-top: 19px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-}
-
-.chronicle {
-  background: #F0EBE1;
-}
-
-.notes {
-  max-width: 850px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.note {
-  background: white;
-  padding: 30px;
-  border-left: 2px solid var(--gold);
-}
-
-.note small {
-  color: #98763c;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 10px;
-}
-
-.note h3 {
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 500;
-  margin: 13px 0;
-}
-
-.note p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.counter-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 850px;
-  margin: 60px auto 0;
-  text-align: center;
-}
-
-.counter strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 48px;
-  font-weight: 500;
-  color: var(--gold);
-}
-
-.counter span {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.letter-section { background: var(--paper); }
-
-.letter {
-  max-width: 760px;
-  margin: auto;
-  background: white;
-  padding: clamp(30px, 7vw, 75px);
-  border: 1px solid rgba(197,160,89,.6);
-  outline: 1px solid rgba(197,160,89,.35);
-  outline-offset: 8px;
-  box-shadow: 0 20px 60px rgba(30,34,56,.06);
-}
-
-.letter-top {
-  text-align: center;
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 35px;
-}
-
-.letter h2 {
-  font-family: var(--serif);
-  font-size: 37px;
-  font-weight: 500;
-  margin-bottom: 25px;
-}
-
-.letter p {
-  color: #62616a;
-  line-height: 2;
-  font-size: 14px;
-  margin-bottom: 17px;
-}
-
-.signature {
-  font-family: "Caveat", cursive;
-  font-size: 34px;
-  color: var(--ink);
-  margin-top: 30px;
-}
-
-.signature small {
-  display: block;
-  font-family: var(--sans);
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 5px;
-}
-
-.final-cta {
-  background: var(--ink);
-  color: white;
-  text-align: center;
-  padding: 95px 8%;
-}
-
-.final-cta h2 {
-  font-family: var(--serif);
-  font-size: clamp(42px, 6vw, 68px);
-  font-weight: 500;
-}
-
-.final-cta p {
-  color: #c9c5bb;
-  margin: 18px auto 30px;
-  line-height: 1.8;
-  max-width: 500px;
-  font-size: 14px;
-}
-
-.seal {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-  font-size: 25px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.seal:hover { background: var(--gold); color: var(--ink); transform: scale(1.08) rotate(12deg); }
-
-footer {
-  padding: 25px 8%;
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-  font-size: 11px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-}
-
-footer span { color: var(--gold); }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s ease, transform .8s ease;
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s ease, transform .8s ease;
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
-.lightbox, .birthday-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(15,17,29,.92);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
+/* MESSAGE */
+
+.message-section { background:#F1EBDD; }
+
+.message-card {
+  max-width:850px;
+  margin:auto;
+  padding:65px;
+  background:var(--white);
+  box-shadow:var(--shadow);
+  text-align:center;
+  position:relative;
 }
 
-.lightbox.open, .birthday-modal.open { display: flex; }
+.message-card:before,
+.message-card:after {
+  content:'';
+  position:absolute;
+  width:55px;
+  height:55px;
+  border-color:var(--gold);
+  border-style:solid;
+}
+
+.message-card:before {
+  top:18px;
+  left:18px;
+  border-width:1px 0 0 1px;
+}
+
+.message-card:after {
+  bottom:18px;
+  right:18px;
+  border-width:0 1px 1px 0;
+}
+
+.quote-mark {
+  font-family:'Playfair Display',serif;
+  font-size:75px;
+  line-height:.8;
+  color:var(--gold);
+}
+
+.message-card p {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(19px,2.5vw,26px);
+  line-height:1.8;
+  margin:20px 0;
+}
+
+.message-card .handwritten {
+  font-family:'Caveat',cursive;
+  color:var(--gold);
+  font-size:30px;
+}
+
+/* GRATITUDE CARDS */
+
+.gratitude-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.gratitude-card {
+  background:white;
+  padding:35px 28px;
+  border:1px solid var(--line);
+  transition:.4s;
+}
+
+.gratitude-card:hover {
+  transform:translateY(-9px);
+  box-shadow:var(--shadow);
+}
+
+.card-number {
+  font-family:'Playfair Display',serif;
+  font-size:35px;
+  color:var(--gold);
+}
+
+.gratitude-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  font-weight:500;
+  margin:18px 0 12px;
+}
+
+.gratitude-card p {
+  font-size:13px;
+  line-height:1.9;
+  color:var(--muted);
+}
+
+/* GALLERY */
+
+.gallery-section { background:#F1EBDD; }
+
+.gallery {
+  display:grid;
+  grid-template-columns:1.1fr .9fr .9fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+.gallery-item {
+  position:relative;
+  overflow:hidden;
+  background:#E8DFD0;
+  cursor:pointer;
+  min-height:260px;
+}
+
+.gallery-item:first-child { grid-row:span 2; }
+
+.gallery-item img {
+  width:100%;
+  height:100%;
+  min-height:260px;
+  object-fit:cover;
+  transition:transform .7s;
+}
+
+.gallery-item:hover img { transform:scale(1.06); }
+
+.gallery-label {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:30px 15px 15px;
+  color:white;
+  font-size:12px;
+  letter-spacing:1px;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));
+}
+
+/* JOURNEY */
+
+.journey {
+  max-width:800px;
+  margin:auto;
+  border-left:1px solid var(--gold);
+  padding-left:35px;
+}
+
+.journey-item {
+  position:relative;
+  margin-bottom:40px;
+}
+
+.journey-item:before {
+  content:'';
+  position:absolute;
+  left:-41px;
+  top:5px;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 5px var(--paper);
+}
+
+.journey-item h3 {
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+
+.journey-item p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+/* LETTER */
+
+.letter-section { background:#F1EBDD; }
+
+.envelope-wrap {
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+}
+
+.envelope {
+  position:relative;
+  width:100%;
+  max-width:460px;
+  height:280px;
+  margin:40px auto;
+  background:#D9C49A;
+  cursor:pointer;
+  box-shadow:0 20px 40px rgba(30,34,56,.15);
+  perspective:1000px;
+}
+
+.envelope:before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:#E8D7B5;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  z-index:3;
+  transform-origin:top;
+  transition:transform .9s ease;
+}
+
+.envelope:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:#CDB582;
+  clip-path:polygon(0 100%,50% 48%,100% 100%);
+  z-index:2;
+}
+
+.envelope.open:before {
+  transform:rotateX(180deg);
+  z-index:0;
+}
+
+.envelope-inner {
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:0;
+  height:90%;
+  background:white;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  transition:transform .9s;
+}
+
+.envelope.open .envelope-inner {
+  transform:translateY(-100px);
+}
+
+.envelope-inner span {
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+}
+
+.envelope-inner small {
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.seal {
+  position:absolute;
+  top:48%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--gold-light);
+  display:grid;
+  place-items:center;
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  border:2px solid var(--gold);
+  transition:opacity .3s;
+}
+
+.envelope.open .seal { opacity:0; }
+
+.letter-content {
+  display:none;
+  max-width:750px;
+  margin:45px auto 0;
+  background:white;
+  padding:55px;
+  box-shadow:var(--shadow);
+  text-align:left;
+  animation:rise .8s forwards;
+}
+
+.letter-content.show { display:block; }
+
+.letter-content h3 {
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:500;
+  margin-bottom:25px;
+}
+
+.letter-content p {
+  font-size:14px;
+  line-height:2;
+  color:#666;
+  margin:15px 0;
+}
+
+.letter-content .signature {
+  font-family:'Caveat',cursive;
+  color:var(--gold);
+  font-size:31px;
+  margin-top:30px;
+}
+
+/* FINAL WISH */
+
+.final-section {
+  text-align:center;
+  padding:140px 9%;
+  background:var(--ink);
+  color:white;
+}
+
+.final-section .eyebrow { color:var(--gold-light); }
+
+.final-section h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(43px,7vw,82px);
+  font-weight:500;
+  margin:25px 0;
+}
+
+.final-section h2 span { color:var(--gold-light); }
+
+.final-section p {
+  color:#D5D4D0;
+  max-width:570px;
+  margin:auto;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.final-button {
+  margin-top:35px;
+  border:1px solid var(--gold);
+  color:var(--gold-light);
+  background:transparent;
+  padding:17px 28px;
+  letter-spacing:2px;
+  font-size:11px;
+  transition:.3s;
+}
+
+.final-button:hover {
+  background:var(--gold);
+  color:var(--ink);
+}
+
+/* SURPRISE MODAL */
+
+.modal {
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(17,20,35,.88);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+}
+
+.modal.show {
+  opacity:1;
+  visibility:visible;
+}
+
+.modal-card {
+  background:var(--paper);
+  max-width:570px;
+  width:100%;
+  padding:55px 35px;
+  text-align:center;
+  position:relative;
+  transform:translateY(25px) scale(.96);
+  transition:.5s;
+}
+
+.modal.show .modal-card {
+  transform:translateY(0) scale(1);
+}
+
+.modal-card h2 {
+  font-family:'Playfair Display',serif;
+  font-size:43px;
+  font-weight:500;
+  margin:20px 0;
+}
+
+.modal-card p {
+  color:var(--muted);
+  line-height:1.9;
+  font-size:14px;
+}
+
+.modal-card .big-heart {
+  font-size:45px;
+  color:var(--gold);
+}
+
+.close-modal {
+  position:absolute;
+  top:15px;
+  right:18px;
+  border:0;
+  background:transparent;
+  font-size:25px;
+  color:var(--ink);
+}
+
+/* HANDWRITTEN CARD */
+
+.hand-card {
+  display:none;
+  margin:30px auto 0;
+  max-width:430px;
+  background:#FFFDF7;
+  padding:35px;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
+  transform:rotate(-2deg);
+  border:1px solid var(--gold-light);
+}
+
+.hand-card.show { display:block; animation:rise .8s; }
+
+.hand-card h3 {
+  font-family:'Caveat',cursive;
+  font-size:36px;
+  color:var(--gold);
+  margin-bottom:15px;
+}
+
+.hand-card p {
+  font-family:'Caveat',cursive;
+  font-size:23px;
+  line-height:1.5;
+  color:var(--ink);
+}
+
+.hand-card .hand-sign {
+  margin-top:20px;
+  text-align:right;
+  font-family:'Caveat',cursive;
+  font-size:24px;
+}
+
+/* FOOTER */
+
+footer {
+  padding:35px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  font-size:11px;
+  color:var(--muted);
+  flex-wrap:wrap;
+}
+
+footer strong {
+  color:var(--ink);
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+}
+
+/* IMAGE LIGHTBOX */
+
+.lightbox {
+  position:fixed;
+  inset:0;
+  background:rgba(20,22,35,.93);
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.lightbox.show { display:flex; }
 
 .lightbox img {
-  max-width: min(90vw, 850px);
-  max-height: 85vh;
-  object-fit: contain;
-  border: 8px solid white;
+  max-height:85vh;
+  max-width:90vw;
+  object-fit:contain;
+  border:8px solid white;
 }
 
-.close {
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  border: 0;
-  background: transparent;
-  color: white;
-  font-size: 35px;
-  cursor: pointer;
+.lightbox button {
+  position:absolute;
+  top:20px;
+  right:25px;
+  color:white;
+  background:none;
+  border:0;
+  font-size:35px;
 }
 
-.modal-paper {
-  max-width: 510px;
-  width: 100%;
-  padding: 55px 35px;
-  background: var(--paper);
-  text-align: center;
-  border: 1px solid var(--gold);
-  position: relative;
+/* FLOATING HEARTS */
+
+.heart {
+  position:fixed;
+  bottom:-30px;
+  z-index:10;
+  pointer-events:none;
+  color:var(--gold);
+  animation:floatUp 6s linear forwards;
 }
 
-.modal-paper .sparkle { font-size: 38px; color: var(--gold); }
-
-.modal-paper h2 {
-  font-family: var(--serif);
-  font-size: 43px;
-  font-weight: 500;
-  margin: 15px 0;
-}
-
-.modal-paper p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.modal-paper .signature { margin-top: 20px; }
-
-@media(max-width: 950px) {
-  .hero { grid-template-columns: 1fr 1fr; padding-left: 6%; padding-right: 6%; }
-  .cards { grid-template-columns: repeat(2, 1fr); }
-  .portrait-frame img { height: 390px; }
-}
-
-@media(max-width: 700px) {
-  .nav { padding: 15px 6%; }
-  .menu-toggle { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 25px 7%;
-    background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 22px;
+@keyframes floatUp {
+  to {
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
   }
-  .nav-links.open { display: flex; }
-  .nav-cta { display: none; }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .hero {
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-top:140px;
+  }
+
+  .hero-description { margin:auto; }
+  .hero-actions { justify-content:center; }
+  .hero-visual { max-width:350px; margin-top:30px; }
+  .hero-frame img { height:420px; }
+
+  .gratitude-grid { grid-template-columns:1fr 1fr; }
+
+  .gallery {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery-item:first-child { grid-row:auto; }
+}
+
+@media(max-width:600px) {
+  nav { padding:20px 6%; }
+  .nav-right { gap:12px; }
+  .nav-right a:not(.nav-pill) { display:none; }
+
+  section { padding:80px 6%; }
 
   .hero {
-    grid-template-columns: 1fr;
-    padding: 65px 7% 75px;
-    gap: 55px;
+    padding:125px 7% 90px;
+    gap:30px;
   }
-  .hero h1 { font-size: clamp(57px, 15vw, 83px); letter-spacing: -3px; }
-  .hero-visual { max-width: 340px; }
-  .portrait-frame img { height: 390px; }
-  .hero-stamp { left: -20px; width: 85px; height: 85px; font-size: 12px; }
 
-  .section { padding: 80px 7%; }
-  .cards { grid-template-columns: 1fr; }
-  .card { min-height: auto; }
-  .gallery-grid { grid-template-columns: 1fr; gap: 35px; max-width: 360px; margin: auto; }
-  .polaroid:nth-child(2) { margin-top: 0; }
-  .polaroid img { height: 330px; }
-  .notes { grid-template-columns: 1fr; }
-  .counter-row { gap: 10px; }
-  .counter strong { font-size: 37px; }
-  .counter span { font-size: 8px; letter-spacing: 1px; }
-  .letter h2 { font-size: 30px; }
-  footer { justify-content: center; text-align: center; }
+  .hero h1 { font-size:57px; }
+  .hero-stamp { left:-15px; width:85px; height:85px; font-size:11px; }
+
+  .message-card { padding:45px 25px; }
+  .gratitude-grid { grid-template-columns:1fr; }
+  .gallery { grid-template-columns:1fr 1fr; gap:10px; }
+  .gallery-item { min-height:190px; }
+  .gallery-item img { min-height:190px; }
+
+  .letter-content { padding:35px 25px; }
+  .letter-content h3 { font-size:27px; }
+
+  .envelope { height:220px; }
+
+  footer { justify-content:center; text-align:center; }
 }
 
-@media(prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
   *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
   }
 }
 </style>
 </head>
 
-<body>
-<div class="progress" id="progress"></div>
+<body class="locked">
 
-<nav class="nav">
-  <a href="#home" class="brand">CLASS <span>X</span> · I</a>
+<div class="grain"></div>
+<canvas id="particles"></canvas>
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
-
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a>
-    <a href="#gratitude">Our Gratitude</a>
-    <a href="#gallery">Memories</a>
-    <a href="#letter">A Letter</a>
+<!-- CINEMATIC OPENING -->
+<div class="intro" id="intro">
+  <div class="intro-content">
+    <div class="intro-small">A little celebration of someone special</div>
+    <h1 class="intro-title">
+      A Day For<br>
+      <span>Shonali Ma'am</span>
+    </h1>
+    <div class="intro-line"></div>
+    <p class="intro-sub">WITH LOVE · CLASS 10TH I</p>
+    <button class="intro-btn" id="enterBtn">OPEN YOUR SURPRISE &nbsp; →</button>
   </div>
+</div>
 
-  <a href="#surprise" class="nav-cta">A Little Surprise ↗</a>
+<!-- NAVIGATION -->
+<nav>
+  <a class="brand" href="#">S<span>.</span>S</a>
+  <div class="nav-right">
+    <a href="#message">Our Message</a>
+    <a href="#memories">Memories</a>
+    <a href="#letter">A Letter</a>
+    <a class="nav-pill" href="#wishes">Birthday Wishes</a>
+  </div>
 </nav>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-content reveal">
-    <div class="eyebrow">A special day · A special teacher</div>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-copy reveal">
+    <div class="eyebrow">A Special Day · A Special Teacher</div>
 
-    <h1>Happy<br>Birthday,<br><em>Shonali Ma'am.</em></h1>
+    <h1>
+      Happy<br>
+      Birthday,<br>
+      <em>Shonali</em><br>
+      Ma'am.
+    </h1>
 
-    <p class="hero-copy">
-      Some lessons stay with us long after the school bell rings.
-      Today, we celebrate the person behind so many of those lessons —
-      a teacher, a guide, and an inspiration.
+    <p class="hero-description">
+      Some teachers make lessons memorable. Some make classrooms
+      feel special. And some leave a little piece of themselves
+      in every student's journey.
+      Today, we celebrate you.
     </p>
 
-    <div class="hero-actions">
-      <a href="#gratitude" class="btn">Read Our Tribute ↗</a>
-      <a href="#gallery" class="btn btn-outline">Explore Memories</a>
-    </div>
+    <div class="hero-signature">With love, Class 10th I ♡</div>
 
-    <p class="hero-note">With love and gratitude, from Class 10th I.</p>
+    <div class="hero-actions">
+      <a href="#message" class="btn primary">A Message For You</a>
+      <a href="#memories" class="btn">Explore Memories</a>
+    </div>
   </div>
 
   <div class="hero-visual reveal">
-    <div class="portrait-frame">
+    <div class="hero-frame">
       <img src="maam-hero.jpg"
-           alt="Shonali Ma'am"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&auto=format&fit=crop&q=85'">
-      <div class="portrait-caption">A teacher who makes a difference.</div>
+           alt="Birthday photograph of Shonali Ma'am"
+           onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#e8dfd0,#c5a059)'; this.parentElement.style.height='520px';">
+      <div class="photo-caption">A teacher, a guide, an inspiration.</div>
     </div>
-    <div class="hero-stamp">MADE WITH<br><span>♥</span><br>GRATITUDE</div>
+    <div class="hero-stamp">A DAY<br>TO<br>CELEBRATE</div>
   </div>
-</section>
 
-<section class="section gratitude" id="gratitude">
-  <div class="section-head reveal">
-    <div class="kicker">A few things we learned</div>
-    <h2>More Than Just<br>English Lessons.</h2>
+  <div class="scroll-note">SCROLL TO EXPLORE ↓</div>
+</header>
+
+<!-- MESSAGE -->
+<section class="message-section" id="message">
+  <div class="section-heading reveal">
+    <div class="eyebrow">A Few Words From Our Hearts</div>
+    <h2>More Than Just a Teacher.</h2>
     <p>
-      The best teachers don't just teach chapters. They leave us with
-      ideas, confidence, curiosity, and memories that last.
+      A little appreciation for the person who makes learning
+      more meaningful, one lesson at a time.
     </p>
   </div>
 
-  <div class="cards">
-    <article class="card reveal">
+  <div class="message-card reveal">
+    <div class="quote-mark">“</div>
+    <p>
+      Behind every confident student, there is often a teacher
+      who believed in them before they fully believed in themselves.
+    </p>
+    <p>
+      Thank you for being that person for us.
+      Your guidance, patience and encouragement mean more
+      than words can express.
+    </p>
+    <div class="handwritten">With gratitude, always.</div>
+  </div>
+</section>
+
+<!-- GRATITUDE -->
+<section>
+  <div class="section-heading reveal">
+    <div class="eyebrow">What Makes You Special</div>
+    <h2>Little Things. Lasting Impact.</h2>
+    <p>
+      The things we appreciate most are often the ones
+      that become part of our everyday memories.
+    </p>
+  </div>
+
+  <div class="gratitude-grid">
+    <article class="gratitude-card reveal">
       <div class="card-number">01</div>
-      <div class="card-icon">✦</div>
-      <h3>The Power of Words</h3>
-      <p>You taught us that words are more than sentences — they are ways to express, understand, and connect with the world.</p>
+      <h3>Your Guidance</h3>
+      <p>
+        For explaining, correcting, encouraging and helping us
+        understand that learning is a journey, not just a result.
+      </p>
     </article>
 
-    <article class="card reveal">
+    <article class="gratitude-card reveal">
       <div class="card-number">02</div>
-      <div class="card-icon">⌁</div>
-      <h3>Confidence to Speak</h3>
-      <p>Every correction and every encouragement helped us find our voice and become a little more confident.</p>
+      <h3>Your Patience</h3>
+      <p>
+        For answering our questions, giving us another chance
+        and believing that we can always do a little better.
+      </p>
     </article>
 
-    <article class="card reveal">
+    <article class="gratitude-card reveal">
       <div class="card-number">03</div>
-      <div class="card-icon">❋</div>
-      <h3>Lessons Beyond Books</h3>
-      <p>From literature to life, you helped us look beyond the printed page and discover something meaningful.</p>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-number">04</div>
-      <div class="card-icon">✧</div>
-      <h3>Memories That Stay</h3>
-      <p>Years may pass, but the classroom moments, laughter, and lessons will always remain a part of our story.</p>
+      <h3>Your Presence</h3>
+      <p>
+        For the classroom conversations, the smiles,
+        the laughter and even those reminders to pay attention!
+      </p>
     </article>
   </div>
 </section>
 
-<section class="quote-band">
-  <div class="quote-mark">“</div>
-  <blockquote class="reveal">
-    A good teacher can inspire hope, ignite imagination,
-    and instil a love of learning.
-  </blockquote>
-  <p>For the teacher who does all three</p>
-</section>
-
-<section class="section" id="gallery">
-  <div class="section-head reveal">
-    <div class="kicker">Little moments, lasting memories</div>
-    <h2>Our Classroom<br>Chronicles.</h2>
+<!-- QUOTE -->
+<section class="gallery-section">
+  <div class="message-card reveal">
+    <div class="eyebrow">A Thought To Remember</div>
     <p>
-      Every photograph has a story. Every ordinary school day
-      becomes special when we look back at it.
+      “A good teacher can inspire hope, ignite the imagination,
+      and instil a love of learning.”
     </p>
-  </div>
-
-  <div class="gallery-grid">
-    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open classroom memory">
-      <img src="maam-class.jpg"
-           alt="Classroom memory"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=85'">
-      <p>Moments in the classroom</p>
-    </div>
-
-    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open candid memory">
-      <img src="maam-candid.jpg"
-           alt="A candid memory"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=85'">
-      <p>The little moments</p>
-    </div>
-
-    <div class="polaroid reveal" tabindex="0" role="button" aria-label="Open class group memory">
-      <img src="class-group.jpg"
-           alt="Class group memory"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&auto=format&fit=crop&q=85'">
-      <p>One class, countless memories</p>
-    </div>
+    <div class="handwritten">Thank you for inspiring us.</div>
   </div>
 </section>
 
-<section class="section chronicle">
-  <div class="section-head reveal">
-    <div class="kicker">From the pages of Class 10th I</div>
-    <h2>Things We May<br>Never Forget.</h2>
+<!-- MEMORIES -->
+<section id="memories">
+  <div class="section-heading reveal">
+    <div class="eyebrow">Moments We Treasure</div>
+    <h2>A Few Frames, A Thousand Memories.</h2>
     <p>
-      A collection of little appreciations for the person who made
-      our learning journey more meaningful.
+      Every photograph holds a moment.
+      Every moment holds a story.
     </p>
   </div>
 
-  <div class="notes">
-    <article class="note reveal">
-      <small>Chapter 01 · Appreciation</small>
-      <h3>For Your Patience</h3>
-      <p>Thank you for explaining things again, answering our questions, and never giving up on our potential.</p>
-    </article>
-
-    <article class="note reveal">
-      <small>Chapter 02 · Inspiration</small>
-      <h3>For Your Encouragement</h3>
-      <p>Your words of encouragement remind us that improvement matters more than perfection.</p>
-    </article>
-
-    <article class="note reveal">
-      <small>Chapter 03 · Memories</small>
-      <h3>For The Laughter</h3>
-      <p>Not every memorable classroom moment comes from a textbook. Some come from the smiles and laughter we share.</p>
-    </article>
-
-    <article class="note reveal">
-      <small>Chapter 04 · Gratitude</small>
-      <h3>For Being You</h3>
-      <p>Thank you for being more than a teacher and making our school journey a little brighter.</p>
-    </article>
-  </div>
-
-  <div class="counter-row reveal">
-    <div class="counter">
-      <strong data-count="365">0</strong>
-      <span>Days of learning</span>
+  <div class="gallery">
+    <div class="gallery-item reveal">
+      <img src="maam-class.jpg" alt="Classroom memory"
+           onerror="this.style.background='#d9c49a';">
+      <div class="gallery-label">In the classroom</div>
     </div>
-    <div class="counter">
-      <strong data-count="100">0</strong>
-      <span>Reasons to smile</span>
+
+    <div class="gallery-item reveal">
+      <img src="maam-candid.jpg" alt="A candid memory">
+      <div class="gallery-label">Little moments</div>
     </div>
-    <div class="counter">
-      <strong data-count="1">0</strong>
-      <span>Wonderful teacher</span>
+
+    <div class="gallery-item reveal">
+      <img src="class-group.jpg" alt="Class 10th I group photograph">
+      <div class="gallery-label">Our class</div>
     </div>
   </div>
 </section>
 
-<section class="section letter-section" id="letter">
-  <div class="section-head reveal">
-    <div class="kicker">A note from your students</div>
-    <h2>A Letter From<br>Our Hearts.</h2>
+<!-- OUR JOURNEY -->
+<section>
+  <div class="section-heading reveal">
+    <div class="eyebrow">Our Classroom Journey</div>
+    <h2>The Story Is Still Being Written.</h2>
+    <p>
+      We still have lessons to learn, goals to reach
+      and memories waiting to be made.
+    </p>
   </div>
 
-  <div class="letter reveal">
-    <div class="letter-top">With heartfelt gratitude</div>
+  <div class="journey reveal">
+    <div class="journey-item">
+      <h3>Every Lesson</h3>
+      <p>
+        Every chapter, every explanation and every correction
+        has helped us grow a little more.
+      </p>
+    </div>
 
-    <h2>Dear Shonali Ma'am,</h2>
+    <div class="journey-item">
+      <h3>13 November 2026</h3>
+      <p>
+        Our Pre-Board examinations begin. We carry your lessons,
+        guidance and encouragement with us.
+      </p>
+    </div>
 
-    <p>
-      On your special day, we wanted to take a moment to say something
-      that we may not say often enough — thank you.
-    </p>
-
-    <p>
-      Thank you for teaching us, guiding us, correcting us, and
-      encouraging us to do better. Your classes have given us more
-      than knowledge of English; they have given us experiences,
-      confidence, and memories that we will carry forward.
-    </p>
-
-    <p>
-      We know that teaching is not always easy. Behind every lesson
-      is your time, effort, and dedication. We truly appreciate
-      everything you do for us.
-    </p>
-
-    <p>
-      May this year bring you happiness, good health, peace, and
-      countless reasons to smile. May you continue inspiring
-      students just as you have inspired us.
-    </p>
-
-    <p>
-      Happy Birthday once again, Ma'am. We feel fortunate to be
-      your students.
-    </p>
-
-    <div class="signature">
-      With love and respect,
-      <small>Your Class 10th I</small>
+    <div class="journey-item">
+      <h3>February 2027</h3>
+      <p>
+        Our Board examinations lie ahead. We hope to make you
+        proud through our efforts and determination.
+      </p>
     </div>
   </div>
 </section>
 
-<section class="final-cta" id="surprise">
-  <div class="kicker">One last thing...</div>
-  <h2>Today Is All About You.</h2>
-  <p>
-    A little celebration from all of us. Thank you for being
-    a wonderful part of our school journey.
+<!-- LETTER -->
+<section class="letter-section" id="letter">
+  <div class="section-heading reveal">
+    <div class="eyebrow">Something From The Heart</div>
+    <h2>A Letter, Just For You.</h2>
+    <p>
+      We couldn't fit all our appreciation into one birthday wish.
+      So, we wrote you a little letter.
+    </p>
+  </div>
+
+  <div class="envelope-wrap reveal">
+    <p style="font-size:12px;letter-spacing:2px;color:#777;">
+      TAP THE ENVELOPE TO OPEN
+    </p>
+
+    <div class="envelope" id="envelope" role="button"
+         tabindex="0" aria-label="Open birthday letter">
+      <div class="envelope-inner">
+        <span>For Shonali Ma'am</span>
+        <small>A little note from Class 10th I</small>
+      </div>
+      <div class="seal">S</div>
+    </div>
+
+    <div class="letter-content" id="letterContent">
+      <h3>Dear Shonali Ma'am,</h3>
+
+      <p>
+        On your special day, we want to take a moment to thank you
+        for everything you do for us.
+      </p>
+
+      <p>
+        Thank you for making English more than just a subject.
+        Thank you for your explanations, your corrections,
+        your encouragement and the patience with which you guide us.
+      </p>
+
+      <p>
+        We will remember the classroom conversations, the smiles,
+        the laughter and even those little reminders to pay attention.
+        These simple moments make our school journey special.
+      </p>
+
+      <p>
+        Our journey in Class 10 is still going on. With Pre-Boards
+        approaching on 13 November and Board examinations ahead
+        in February, we hope to give our best and make you proud.
+      </p>
+
+      <p>
+        May your year ahead be filled with happiness, good health,
+        peace, laughter and countless beautiful moments.
+        May you continue inspiring students just as you have inspired us.
+      </p>
+
+      <p>
+        Happy Birthday once again, Ma'am.
+        We are truly grateful to have you as our teacher.
+      </p>
+
+      <div class="signature">
+        With Love,<br>
+        Class 10th I ♡
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL WISH -->
+<section class="final-section" id="wishes">
+  <div class="eyebrow reveal">One Last Birthday Wish</div>
+
+  <h2 class="reveal">
+    Keep Inspiring.<br>
+    Keep <span>Shining.</span>
+  </h2>
+
+  <p class="reveal">
+    May your birthday be as wonderful as the impact you have
+    on the people around you. Thank you for being a part
+    of our journey.
   </p>
-  <button class="seal" id="surpriseButton" aria-label="Open birthday surprise">✦</button>
-  <p style="font-size:10px;letter-spacing:2px;margin-top:18px;">TAP THE SEAL FOR A SURPRISE</p>
+
+  <button class="final-button reveal" id="surpriseBtn">
+    OPEN YOUR FINAL SURPRISE ✦
+  </button>
+
+  <div class="hand-card" id="handCard">
+    <h3>Dear Shonali Ma'am,</h3>
+    <p>
+      If we could give you one thing today,
+      it would be the ability to see yourself
+      through our eyes.
+      Then you would know how much you inspire us.
+      <br><br>
+      Happy Birthday! May your smile never fade.
+    </p>
+    <div class="hand-sign">— Your Class 10th I ♡</div>
+  </div>
 </section>
-</main>
 
 <footer>
-  <div>Made with <span>♥</span> by Class 10th I</div>
-  <div>Happy Birthday, Shonali Ma'am · <span>2026</span></div>
+  <strong>Made With Love ♡</strong>
+  <span>For Shonali Ma'am · Class 10th I</span>
+  <span>Happy Birthday · 2026</span>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <button class="close" id="closeLightbox" aria-label="Close">×</button>
-  <img src="" alt="Enlarged classroom memory" id="lightboxImage">
+<!-- BIRTHDAY MODAL -->
+<div class="modal" id="birthdayModal">
+  <div class="modal-card">
+    <button class="close-modal" id="closeModal" aria-label="Close">×</button>
+    <div class="big-heart">✦</div>
+    <div class="eyebrow">From All Of Us</div>
+    <h2>Happy Birthday,<br>Shonali Ma'am!</h2>
+    <p>
+      Thank you for teaching us, guiding us and making
+      our classroom a little more special.
+      Here's to a beautiful year ahead!
+    </p>
+    <p style="font-family:'Caveat',cursive;font-size:27px;color:#C5A059;margin-top:20px;">
+      With love, Class 10th I ♡
+    </p>
+  </div>
 </div>
 
-<div class="birthday-modal" id="birthdayModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <button class="close" id="closeModal" aria-label="Close">×</button>
-  <div class="modal-paper">
-    <div class="sparkle">✦ ✧ ✦</div>
-    <div class="kicker">A special wish for a special teacher</div>
-    <h2 id="modalTitle">Happy Birthday!</h2>
-    <p>
-      May your days be filled with the same joy, kindness,
-      and inspiration that you bring into our classroom.
-    </p>
-    <div class="signature">With lots of love ♥</div>
-    <p style="margin-top:8px;font-size:11px;letter-spacing:2px;">CLASS 10TH I</p>
-  </div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button id="closeLightbox" aria-label="Close image">×</button>
+  <img src="" alt="Expanded memory" id="lightboxImage">
 </div>
 
 <script>
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+/* CINEMATIC INTRO */
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+const intro = document.getElementById('intro');
+const enterBtn = document.getElementById('enterBtn');
+
+enterBtn.addEventListener('click', () => {
+  intro.classList.add('hide');
+  document.body.classList.remove('locked');
+
+  setTimeout(() => {
+    intro.style.display = 'none';
+  }, 1100);
 });
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.textContent = "☰";
-  });
-});
+/* SCROLL REVEAL */
 
-// Reading progress
-window.addEventListener("scroll", () => {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-  document.getElementById("progress").style.width = progress + "%";
-});
-
-// Scroll reveal
-const revealObserver = new IntersectionObserver(entries => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+      entry.target.classList.add('visible');
       revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-
-// Gallery lightbox
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-
-function openLightbox(img) {
-  lightboxImage.src = img.src;
-  lightboxImage.alt = img.alt;
-  lightbox.classList.add("open");
-}
-
-document.querySelectorAll(".polaroid").forEach(card => {
-  card.addEventListener("click", () => openLightbox(card.querySelector("img")));
-  card.addEventListener("keydown", e => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openLightbox(card.querySelector("img"));
-    }
-  });
+document.querySelectorAll('.reveal').forEach(element => {
+  revealObserver.observe(element);
 });
 
-function closeLightbox() {
-  lightbox.classList.remove("open");
+/* LETTER ENVELOPE */
+
+const envelope = document.getElementById('envelope');
+const letterContent = document.getElementById('letterContent');
+
+function openLetter() {
+  if (envelope.classList.contains('open')) return;
+
+  envelope.classList.add('open');
+
+  setTimeout(() => {
+    letterContent.classList.add('show');
+    letterContent.scrollIntoView({
+      behavior:'smooth',
+      block:'center'
+    });
+  }, 750);
 }
 
-document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) closeLightbox();
-});
+envelope.addEventListener('click', openLetter);
 
-// Birthday surprise
-const birthdayModal = document.getElementById("birthdayModal");
-
-function celebrate() {
-  birthdayModal.classList.add("open");
-
-  if (typeof confetti === "function") {
-    const duration = 2800;
-    const end = Date.now() + duration;
-
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 65,
-        origin: { x: 0, y: 0.7 },
-        colors: ["#C5A059", "#FFFFFF", "#E7C77D", "#1E2238"]
-      });
-
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 65,
-        origin: { x: 1, y: 0.7 },
-        colors: ["#C5A059", "#FFFFFF", "#E7C77D", "#1E2238"]
-      });
-
-      if (Date.now() < end) requestAnimationFrame(frame);
-    })();
+envelope.addEventListener('keydown', event => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    openLetter();
   }
-}
+});
 
-document.getElementById("surpriseButton").addEventListener("click", celebrate);
+/* FINAL SURPRISE */
+
+const modal = document.getElementById('birthdayModal');
+const surpriseBtn = document.getElementById('surpriseBtn');
+const closeModal = document.getElementById('closeModal');
+const handCard = document.getElementById('handCard');
+
+surpriseBtn.addEventListener('click', () => {
+  modal.classList.add('show');
+  document.body.classList.add('locked');
+  launchHearts();
+});
 
 function closeBirthdayModal() {
-  birthdayModal.classList.remove("open");
+  modal.classList.remove('show');
+  document.body.classList.remove('locked');
+
+  handCard.classList.add('show');
+
+  setTimeout(() => {
+    handCard.scrollIntoView({
+      behavior:'smooth',
+      block:'center'
+    });
+  }, 300);
 }
 
-document.getElementById("closeModal").addEventListener("click", closeBirthdayModal);
-birthdayModal.addEventListener("click", e => {
-  if (e.target === birthdayModal) closeBirthdayModal();
-});
+closeModal.addEventListener('click', closeBirthdayModal);
 
-// Keyboard controls
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    closeLightbox();
+modal.addEventListener('click', event => {
+  if (event.target === modal) {
     closeBirthdayModal();
   }
 });
 
-// Gentle counter animation
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
+/* PHOTO LIGHTBOX */
 
-    const el = entry.target;
-    const target = Number(el.dataset.count);
-    const start = performance.now();
-    const duration = 1400;
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
 
-    function update(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased) + (target === 100 ? "+" : "");
+document.querySelectorAll('.gallery-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    if (!img.complete || !img.naturalWidth) return;
 
-      if (progress < 1) requestAnimationFrame(update);
+    lightboxImage.src = img.src;
+    lightbox.classList.add('show');
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('show');
+  lightboxImage.src = '';
+}
+
+document.getElementById('closeLightbox')
+  .addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', event => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+/* ESCAPE KEY */
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeLightbox();
+
+    if (modal.classList.contains('show')) {
+      closeBirthdayModal();
+    }
+  }
+});
+
+/* FLOATING HEARTS */
+
+function launchHearts() {
+  const symbols = ['♡','✦','♥','✧'];
+
+  for (let i = 0; i < 24; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = symbols[
+        Math.floor(Math.random() * symbols.length)
+      ];
+
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (14 + Math.random() * 20) + 'px';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 8500);
+    }, i * 120);
+  }
+}
+
+/* SUBTLE GOLD PARTICLES */
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < 45; i++) {
+  particles.push({
+    x:Math.random() * canvas.width,
+    y:Math.random() * canvas.height,
+    size:Math.random() * 2 + .5,
+    speed:Math.random() * .35 + .08,
+    opacity:Math.random() * .45 + .1
+  });
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.y -= p.speed;
+
+    if (p.y < -5) {
+      p.y = canvas.height + 5;
+      p.x = Math.random() * canvas.width;
     }
 
-    requestAnimationFrame(update);
-    counterObserver.unobserve(el);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(197,160,89,${p.opacity})`;
+    ctx.fill();
   });
-}, { threshold: 0.7 });
 
-document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
 </script>
+
 </body>
 </html>
